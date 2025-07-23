@@ -1,0 +1,24 @@
+# cluster-config/argocd/guestbook-app.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # This points to YOUR GitOps repository
+    repoURL: "https://github.com/ReyRedd/cluster-config.git"
+    targetRevision: HEAD
+    # This points to the directory inside your repo where the deployment.yaml is
+    path: apps/guestbook
+  destination:
+    server: "https://kubernetes.default.svc"
+    # This is the namespace where your app will be deployed
+    namespace: guestbook-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
