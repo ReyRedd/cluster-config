@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: guestbook-container
-        image: reyredd/guestbook:c4ba99a
+        image: reyredd/guestbook:b7419cd
         ports:
         - containerPort: 5000
         env:
