@@ -24,3 +24,19 @@ spec:
             configMapKeyRef:
               name: guestbook-app-config
               key: DATABASE_URL
+kind: Service
+metadata:
+  name: guestbook-service
+  namespace: guestbook-app
+spec:
+  # This exposes the service externally using a load balancer.
+  type: LoadBalancer
+  selector:
+    # This must match the labels on your pods (from your deployment.yaml).
+    app: guestbook
+  ports:
+    - protocol: TCP
+      # The port that the service will be exposed on.
+      port: 80
+      # The port on your container that the service will forward traffic to.
+      targetPort: 5000
