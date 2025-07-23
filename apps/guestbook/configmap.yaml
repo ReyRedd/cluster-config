@@ -1,0 +1,9 @@
+# cluster-config/apps/guestbook/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guestbook-app-config
+  namespace: guestbook-app
+data:
+  # IMPORTANT: Update this line with your VM's connection details
+  DATABASE_URL: "postgresql://ubuntu:spectro@10.3.0.114:5432/guestbook_db
